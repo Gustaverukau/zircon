@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zicon Contrôle - Suivi d'Incubation</title>
+    <style>
+        /* Reset et Polices */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c7a7b;
+            --accent: #ecc94b;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        body {
+            background: var(--light);
+        }
+
+        /* En-tête */
+        header {
+            background: var(--gradient);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🥚";
+            font-size: 1.2em;
+        }
+
+        /* Section Principale */
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+            min-height: calc(100vh - 160px);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Carte d'incubation */
+        .incubation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .incubation-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .incubation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .client-name {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-container {
+            margin: 1.5rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-size: 0.9em;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #edf2f7;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--secondary);
+            width: 65%;
+            transition: width 0.5s ease;
+        }
+
+        /* Statistiques */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--dark);
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* Alertes */
+        .alert {
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #fff9db;
+            border-left: 4px solid #ffe066;
+        }
+
+        .alert-icon {
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+                margin-top: 80px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">Zicon Contrôle</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="incubation-grid">
+            <!-- Cartes Clients -->
+            <article class="incubation-card">
+                <div class="card-header">
+                    <h2 class="client-name">Rahdj Radjabu</h2>
+                    <p>Canard - Jour 14/28</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Progression</span>
+                        <span>45%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><strong>Humidité:</strong> 60%</p>
+                    <p><strong>Œufs viables:</strong> 38/40</p>
+                </div>
+            </article>
+
+            <article class="incubation-card">
+                <div class="card-header">
+                    <h2 class="client-name">Flora Masangu</h2>
+                    <p>Poulet - Jour 18/21</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Progression</span>
+                        <span>68%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 68%"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><strong>Humidité:</strong> 55%</p>
+                    <p><strong>Œufs viables:</strong> 45/50</p>
+                </div>
+            </article>
+
+            <article class="incubation-card">
+                <div class="card-header">
+                    <h2 class="client-name">Eben Suma</h2>
+                    <p>Autruche - Jour 35/42</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Progression</span>
+                        <span>83%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 83%"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><strong>Humidité:</strong> 45%</p>
+                    <p><strong>Œufs viables:</strong> 12/15</p>
+                </div>
+            </article>
+
+            <article class="incubation-card">
+                <div class="card-header">
+                    <h2 class="client-name">Mathieu Loya</h2>
+                    <p>Caille - Jour 10/16</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Progression</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><strong>Humidité:</strong> 65%</p>
+                    <p><strong>Œufs viables:</strong> 28/30</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- Statistiques -->
+        <section class="stats-container">
+            <div class="stat-box">
+                <div class="stat-value">94%</div>
+                <div class="stat-label">Taux d'éclosion</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">87%</div>
+                <div class="stat-label">Taux de réussite</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">4j</div>
+                <div class="stat-label">Moyenne avant éclosion</div>
+            </div>
+        </section>
+
+        <!-- Alertes -->
+        <div class="alert">
+            <span class="alert-icon">⚠️</span>
+            <div>
+                <h3>Éclosion imminente</h3>
+                <p>Rahdj Radjabu - Préparation nécessaire dans les 24h</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
